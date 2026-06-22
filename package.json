@@ -1,7 +1,6 @@
 {
-  "engines":{
-    "node":"22.16.0"
-
+  "engines": {
+    "node": "22.16.0"
   },
   "name": "hostelsroom",
   "version": "1.0.0",
@@ -12,5 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
