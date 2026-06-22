@@ -1,0 +1,26 @@
+<% layout("/layouts/bolierplayte")%>
+
+    
+        <h1>All Rooms</h1>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+            <%for (let room of allrooms) { %>
+                <a href="/Rooms/<%= room.id %>" class="Room-list">
+                <div class="card  listing-card">
+                    <img src="<%= room.image[0].url %>" class="card-img-top" alt="..." style="height: 20rem">
+                     <div class="card-img-overlay">
+                </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= room.title %>
+                            </b>
+                            <br>
+                            <%= room.price.toLocaleString("en-PK")%>/per month
+
+                        </p>
+                    </div>
+                </div>
+                </a>
+                <% } %>
+        </div>
+    

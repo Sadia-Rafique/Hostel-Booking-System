@@ -1,0 +1,76 @@
+<% layout("/layouts/bolierplayte")%>
+<br>
+<div class="row">
+    <div class="col-8 offset-2">
+    <h2>Create New Room</h2>
+    <form method="POST" action="/Rooms" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-2">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="Room[title]" id="title" placeholder=" Enter  Hostel Name" 
+        class="form-control" required>
+        <div class="invalid-feedback">Please Enter Hostel Name</div>
+       </div>
+        <div class="mb-2">
+         <label for="image" class="form-label">Upload Room Pick</label>
+        <input   type="file" name="Room[image]"  id="image"
+        class="form-control"  multiple required>
+        </div>
+
+        <div class="row">
+        <div class="mb-2 col-md-6">
+         <label for="city" class="form-label">Enter City</label>
+        <input type="text" name="Room[city]"  id="city"placeholder=" Enter City"
+        class="form-control" required>
+        <div class="invalid-feedback">Please Enter City</div>
+        </div>
+        
+        <div class="mb-2 col-md-6">
+         <label for="area" class="form-label">Enter Area</label>
+        <input type="text" name="Room[area]" id="area" placeholder=" Enter Area"
+        class="form-control" required>
+         <div class="invalid-feedback">Please Enter Area</div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="mb-2 col-md-6">
+         <label for="category" class="form-label">Enter Category</label>
+        <input type="text" name="Room[category]"  id="category"
+        placeholder=" Enter Category"
+        class="form-control" required>
+        <div class="invalid-feedback">Please Enter Category</div>
+        </div>
+        <div class="mb-2 col-md-6">
+         <label for="roomType" class="form-label">Enter Room Type</label>
+        <input type="text" name="Room[roomType]" id="room" placeholder=" Enter Room Type"
+        class="form-control" required>
+        <div class="invalid-feedback">Please Enter Room Type</div>
+        </div>
+        </div>
+
+        <div class="mb-2">
+         <label for="gender" class="form-label"> Gender Allowed</label>
+        <input type="text" name="Room[gender]"  id="gender"placeholder="Enter Gender"
+        class="form-control" required>
+         <div class="invalid-feedback">Please Enter Gender</div>
+        </div>
+        <div class="mb-2">
+         <label for="facilities" class="form-label">Enter Facilities You Provide</label>
+        <input type="text" name="Room[facilities][]" id="facilities" placeholder=" Enter Facilities"
+        class="form-control" required>
+         <div class="invalid-feedback">Please Enter Facilities</div>
+        </div>
+        <div class="mb-2"> 
+       
+         <label for="Price" class="form-label">Monthly Rent </label>
+        <input type="number" name="Room[price]"  id="Rent"placeholder=" Enter Price"
+        class="form-control" required>
+         <div class="invalid-feedback">Please Enter Monthly Rent</div>
+        </div>
+        
+        <button class="btn btn-dark add-btn mt-3">Add Room</button>
+        
+
+    </form>
+    </div>
+    </div>
+    

@@ -1,0 +1,74 @@
+<% layout("/layouts/bolierplayte") %>
+<div class="row">
+    <div class="col-8 offset-2">
+    <h2>Edit Room Details</h2>
+    <form method="POST" action="/Rooms/<%=room._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        
+        <div class="mb-2">
+            <label for="title" class="form-label">Edit Title</label>
+            <input type="text" name="Room[title]" id="title" value="<%=room.title%>" class="form-control" required>
+            <div class="invalid-feedback">Please Enter Hostel Name</div>
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Current Room Images:</label>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+                <% room.image.forEach((img) => { %>
+                    <div class="position-relative">
+                        <img src="<%= img.url %>" class="img-thumbnail" style="width:150px;height:120px;object-fit:cover;">
+                    
+                    </div>
+                <% }) %>
+            </div>
+            
+            <input type="file" name="Room[image]" id="image" class="form-control" multiple>
+        </div>
+
+        <div class="row">
+            <div class="mb-2 col-md-6">
+                <label for="city" class="form-label">Edit City</label>
+                <input type="text" name="Room[city]" id="city" value="<%=room.city%>" class="form-control" required>
+                <div class="invalid-feedback">Please Enter Hostel Name</div>
+            </div>
+            <div class="mb-2 col-md-6">
+                <label for="area" class="form-label">Edit Area</label>
+                <input type="text" name="Room[area]" id="area" value="<%=room.area%>" class="form-control" required>
+                <div class="invalid-feedback">Please Enter Hostel Area</div>
+            </div>
+        </div>
+      
+        <div class="row">
+            <div class="mb-2 col-md-6">
+                <label for="category" class="form-label">Edit Category</label>
+                <input type="text" name="Room[category]" id="category" value="<%=room.category%>" class="form-control" required>
+                <div class="invalid-feedback">Please Enter Hostel Category</div>
+            </div>
+            <div class="mb-2 col-md-6">
+                <label for="roomType" class="form-label">Edit Room Type</label>
+                <input type="text" name="Room[roomType]" id="roomType" value="<%=room.roomType%>" class="form-control" required>
+                <div class="invalid-feedback">Please Enter Room Type</div>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="gender" class="form-label">Edit Gender Allowed</label>
+            <input type="text" name="Room[gender]" id="gender" value="<%=room.gender%>" class="form-control" required>
+            <div class="invalid-feedback">Please Enter Gender</div>
+        </div>
+
+        <div class="mb-2">
+            <label for="facilities" class="form-label">Edit Facilities You Provide</label>
+            <input type="text" name="Room[facilities][]" id="facilities" value="<%= Array.isArray(room.facilities) ? room.facilities.join(',') : room.facilities %>" class="form-control" required>
+            <div class="invalid-feedback">Please Enter Hostel Facilities</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Edit Monthly Rent</label>
+            <input type="number" name="Room[price]" id="price" value="<%=room.price%>" class="form-control" required>
+            <div class="invalid-feedback">Please Enter Monthly Rent</div>
+        </div>
+
+        <button class="btn btn-dark update-btn mb-3">Update</button>
+    </form>
+    </div>
+</div>

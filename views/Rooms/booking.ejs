@@ -1,0 +1,67 @@
+<% layout("/layouts/bolierplayte")%>
+     <div class="row">
+          <div class="col-6 offset-3">
+               <h2>Booking Form</h2>
+               <form method="POST" action="/Rooms/<%=room._id%>/booking" enctype="multipart/form-data">
+                    <div class="mb-2">
+                         <label for="username" class="form-label"> <b>Enter Your Name</b></label>
+                         <input type="text" name="BookingRoom[username]" class="form-control" id="username" required>
+
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="fatherName" class="form-label"> <b>Enter Father Name</b></label>
+                         <input type="text" name="BookingRoom[fatherName]" class="form-control" id="father" required>
+
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="gender" class="form-label"><b> Enter Your Gender</b></label>
+                         <input type="text" name="BookingRoom[gender]" class="form-control" id="gender" required>
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="contact" class="form-label"><b> Enter Your Contact Number</b></label>
+                         <input type="text" name="BookingRoom[contact]" class="form-control" id="contact" required>
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="guardianNumber" class="form-label"> <b>Enter Your Guardin Number</b></label>
+                         <input type="text" name="BookingRoom[guardianNumber]" class="form-control" required>
+                    </div>
+                    <div class="row">
+                         <div class="mb-2">
+                              <label for="useridcard" class="form-label"> <b>Upload your Id Card</b></label>
+                              <input type="file" name="BookingRoom[useridcard]" class="form-control"  multiple required>
+                         </div>
+                         <div class="mb-2">
+                              <label for="guardiancard" class="form-label"> <b>Upload Your Guardin Id Card</b></label>
+                              <input type="file" name="BookingRoom[guardiancard]" class="form-control"  multiple required>
+                         </div>
+                    </div>
+
+                    <div class="row">
+                         <div class="mb-2 col-6">
+                              <label for="checkin" class="form-label"> <b>Enteryour CheckIn date</b></label>
+                              <input type="date" name="BookingRoom[checkin]" class="form-control" required>
+                         </div>
+                         <div class="mb-2 col-6">
+                              <label for="leftdate" class="form-label"> <b>Enter Your Left Date</b></label>
+                              <input type="date" name="BookingRoom[leftdate]" class="form-control" required>
+                         </div>
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="address" class="form-label"><b>Enter Your Address</b></label>
+                         <input type="text" name="BookingRoom[address]" class="form-control" required>
+                    </div>
+
+                    <div class="mb-2">
+                         <label for="booking" class="form-label"><b>Upload payment Proof</b></label>
+                         <input type="file" name="BookingRoom[booking]" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+               </form>
+
+          </div>
+     </div>

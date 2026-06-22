@@ -1,0 +1,120 @@
+<%layout("/layouts/bolierplayte")%>
+
+<div class="row mt-3">
+    <div class="col-8 offset-3">
+        <h2>Room Details:</h2>
+    </div>
+        <p class="card-text col-8 offset-3 "><b>Hostel Name:</b><%= room.title %></p>
+    <div class="card col-6 offset-3 listing-card ">
+
+    <div id="roomCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="false">
+  
+  <!-- Carousel Images Inner -->
+  <div class="carousel-inner">
+    <% room.image.forEach((img, index) => { %>
+      <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+        <img class="d-block w-100" src="<%= img.url %>" alt="Slide <%= index + 1 %>" style="max-height: 450px; object-fit: cover;">
+      </div>
+    <% }); %>
+  </div>
+  
+  <% if (room.image.length > 1) { %>
+    <!--  (Previous Btn) -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    
+    <!-- (Next btn) -->
+    <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  <% } %>
+  
+</div>
+    
+        <div class="card-body">
+            <p class="card-text"><b>Owner:</b><%= room.owner.username %></p>
+              <p class="card-text"> <b>City Name:</b> <%= room.city %></p>
+               <p class="card-text"><b>Area:</b> <%= room.area %></p>
+              <p class="card-text">  <b>Hostel Type</b><%= room.category %></p>
+              <p class="card-text"> <b>Room Type:</b> <%= room.roomType %></p>
+               <p class="card-text"> <b>Gender:</b><%= room.gender %></p>
+               <p class="card-text"><b>Facilities:</b> <%= room.facilities %></p>
+               <p class="card-text"> <b>Rent:</b><%= room.price.toLocaleString() %> RS</p>
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Booking Btn -->
+<a href="/Rooms/<%= room._id %>/booking" class="btn btn-primary col-2  offset-3 mb-3">Book This Room</a>
+
+     <% if(currentUser && room.owner._id.equals(currentUser._id)) {%>
+    <div class="btns mb-3">
+        
+        <a href="/Rooms/<%=room._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn ">
+            Edit
+        </a>
+        
+        <form method="POST" action="/Rooms/<%=room._id%>?_method=DELETE" >
+            <button type="submit"  class="btn btn-dark  offset-5">
+                Delete
+            </button>
+        </form>
+        <%}%>
+
+    </div>
+    
+    <div class="col-8 offset-3">
+        <% if(currentUser){ %>
+        <h3>Leave a Review</h3>
+        <form method="POST" action="/Rooms/<%=room._id%>/reviews" 
+        novalidate class="needs-validation"> 
+        
+         <div class="mb-3 mt-3">
+            <label for="rating" class="form-label">Rating</label>
+        <fieldset class="starability-basic">
+  <legend>First rating:</legend>
+  <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked aria-label="No rating." />
+  <input type="radio" id="first-rate1" name= "review[rating]"value="1" />
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+</div>
+             <div class="mb-3 mt-3">
+            <label for="comment" class="form-label" >Enter Comment</label>
+            <textarea name="review[comment]"col="6", rows="5"  class="form-control" required></textarea>
+            <div class="invalid-feedback">Please Enter Some Comment</div>
+            </div>
+        <button class="btn btn-outline-dark mb-3">Submit</button>
+        </form>
+        <%}%>
+        <!-- <h4 class="mb-3">All Reviews</h4> -->
+        <div class="row ">
+        <% for(let review of room.reviews){%>
+         <div class="card  col-6  mb-3" >
+       <div class="card-body">
+      <h5 class="card-title"><%=review.author.username%></h5>  
+  <p class="starability-result card-text" data-rating=<%=review.rating%>><%=review.rating%> </p>
+   <p class="card-text"><%=review.comment%></p>
+       
+     </div>
+     <form class="mb-3" method="POST" action="/Rooms/<%=room._id%>/reviews/<%=review._id%>?_method=DELETE">
+         <button class="btn btn-sm btn-dark">Delete</button>
+
+     </form>
+     </div>
+     
+       <% }%>
+       </div>
+
+
+    </div>
