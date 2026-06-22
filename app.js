@@ -1,7 +1,3 @@
-// if(process.env.NODE_ENV!=="production"){
-//     require('dotenv').config();
-// }
-
 const express=require('express');
 const app=express();
 const mongoose=require("mongoose");
@@ -62,7 +58,7 @@ const sessionOption = {
     }
 };
 //  for error:
-store.on("error",()=>{
+store.on("error",(err)=>{
     console.log("ERROR IN MONGO SESSION STORE",err)
 })
 
