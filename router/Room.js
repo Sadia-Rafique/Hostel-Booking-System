@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const ExpressError = require("../utils/ExpressError.js");
 const Room = require("../data/room.js");
 const { RoomSchema,bookingschema } = require("../schema.js");

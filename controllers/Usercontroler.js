@@ -29,7 +29,7 @@ module.exports.render=(req,res)=>{
 module.exports.loginrender=(req,res)=>{
   res.render("user/login");
 };
-//  sfter successfull login:
+//  after successfull login:
 module.exports.login=(req, res) => {
   const redirectUrl = res.locals.redirectUrl || "/Rooms"; 
     res.redirect(redirectUrl);
