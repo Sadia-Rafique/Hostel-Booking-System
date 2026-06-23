@@ -5,7 +5,7 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.Api_Key,
-    api_secret: process.env.API_SECRET 
+    api_secret: process.env.Api_Secret 
 });
 
 // Setup storage engine for room images
