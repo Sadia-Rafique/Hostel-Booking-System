@@ -1,8 +1,8 @@
+const dotenv=require('dotenv').config();
 const express=require('express');
 const app=express();
 const mongoose=require("mongoose");
 const Room=require("./data/room.js");
-const dotenv=require('dotenv').config();
 const methodOverride=require("method-override");
 const ejsmate=require("ejs-mate");
 app.engine("ejs",ejsmate);
@@ -86,6 +86,11 @@ app.use("/Rooms", roomRouter);
 app.use("/Rooms", reviewRouter);
 app.use("/", UserRouter);
 app.use("/Rooms",bookingRoute)
+// home Page
+app.get("/", (req, res) => {
+    res.redirect("/Rooms");
+});
+
 
 // Error handling middleware
 app.use((req, res, next) => { 
