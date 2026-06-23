@@ -47,7 +47,7 @@ const store = MongoStore.create({
 // session define
 const sessionOption = {
     store:store,
-      secret: process.env.SECREAT_KEY,
+      secret: process.env.SECRET_KEY,
     saveUninitialized: true,
     cookie: {
         maxAge: 7 * 24 * 60 * 60 * 1000,
