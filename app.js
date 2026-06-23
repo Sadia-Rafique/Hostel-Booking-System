@@ -2,8 +2,7 @@ const express=require('express');
 const app=express();
 const mongoose=require("mongoose");
 const Room=require("./data/room.js");
-const dotenv=require('dotenv');
-dotenv.config();
+const dotenv=require('dotenv').config();
 const methodOverride=require("method-override");
 const ejsmate=require("ejs-mate");
 app.engine("ejs",ejsmate);
@@ -37,20 +36,18 @@ main().then(()=>{
 async function main(){
 await mongoose.connect(dblink);
 }
-// mongo store:
 
 const store = MongoStore.create({
     mongoUrl: dblink,
     crypto: {
-        secret: process.env.SECREAT,
+        secret: process.env.SECRET_KEY,
     },
     touchAfter: 24 * 3600,
 });
 // session define
 const sessionOption = {
     store:store,
-    secret: process.env.SECREAT,
-    resave: false,
+      secret: process.env.SECREAT_KEY,
     saveUninitialized: true,
     cookie: {
         maxAge: 7 * 24 * 60 * 60 * 1000,

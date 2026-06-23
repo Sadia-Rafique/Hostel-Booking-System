@@ -1,11 +1,12 @@
-const cloudinary = require('cloudinary').v2;
+const { v2: cloudinary } = require('cloudinary');
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
 
 // Configure Cloudinary credentials
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    api_secret: process.env.API_SECRET 
 });
 
 // Setup storage engine for room images
@@ -13,7 +14,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'Roomimages',
-        allowed_formats: ['jpg', 'png', 'jpeg'], 
+        allowedFormats: ['jpg', 'png', 'jpeg'], 
     }, 
 }); 
 
@@ -35,7 +36,7 @@ const booking = new CloudinaryStorage({
         
         return {
             folder: folderName, 
-            allowed_formats: ["jpg", "png", "jpeg"] 
+            allowedFormats: ["jpg", "png", "jpeg"] 
         };
     }
 });
